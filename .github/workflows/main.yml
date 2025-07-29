@@ -9,17 +9,10 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      - name: Create Downloads.bat Manually
+      - name: Downloading & Installing Essentials
         run: |
-          echo echo Installing Essentials... > Downloads.bat
-          echo REM Replace these lines with your real commands >> Downloads.bat
-          echo echo Download complete >> Downloads.bat
-
-      - name: Run Downloads.bat
-        run: cmd /c Downloads.bat
-
-      - name: Debug - Check Files
-        run: dir
+          Invoke-WebRequest -Uri "https://gitlab.com/chmod12/lm_win-10_github_rdp/-/raw/main/Downloads.bat" -OutFile "Downloads.bat"
+          cmd /c Downloads.bat
 
       - name: Connect to LiteManager
         run: cmd /c show.bat
